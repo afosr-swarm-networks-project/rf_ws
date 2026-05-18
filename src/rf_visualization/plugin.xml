@@ -1,0 +1,19 @@
+<library path="src">
+  <class name="Waterfull Viewer"
+         type="rf_visualization.waterfull_plugin.WaterfullPlugin"
+         base_class_type="rqt_gui_py::Plugin">
+    <description>
+      Visualize RF STFT frames with detection overlays and selectable topics.
+    </description>
+    <qtgui>
+      <group>
+        <label>Visualization</label>
+        <icon type="theme">folder</icon>
+        <statustip>Plugins related to visualization.</statustip>
+      </group>
+      <label>RF Waterfull Viewer</label>
+      <icon type="theme">utilities-system-monitor</icon>
+      <statustip>View STFT waterfalls and detector boxes.</statustip>
+    </qtgui>
+  </class>
+</library>
