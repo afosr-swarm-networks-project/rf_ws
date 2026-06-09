@@ -15,4 +15,11 @@ docker composite up rf_agent
 It takes time to build the docker image the first time you run the command, make sure you have internet connection.
 
 ### Host Side
-TODO
+```bash
+source /opt/ros/jazzy/setup.bash
+ros2 topic list
+# in the repo root:
+colcon build --packages-select rf_msgs rf_visualization
+rqt
+# go to plugins -> visualization -> RF waterfall viewer
+```
