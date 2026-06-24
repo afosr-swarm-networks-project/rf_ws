@@ -25,7 +25,7 @@ ros2 launch minimal_startup unitree_go1_minimal_startup_launch.py
 
 In a new terminal:
 ```
-colcon build
+colcon build --packages-select rf_control rf_msgs
 source ~/rf_ws/install/setup.bash
 ros2 run rf_control controller_node
 ```

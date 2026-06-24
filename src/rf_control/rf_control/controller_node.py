@@ -18,9 +18,15 @@ import os
 class Go1RobotController(Node):
     def __init__(self) -> None:
         # Read robot number from environment variable, default to 1
-        robot_num = os.environ.get("ROBOT_NUM", os.environ.get("ROBOT_NUMBER", "1"))
-        node_namespace = f"R{robot_num}"
-        robot_ns_default = f"go1_016{robot_num}"
+        robot_num_str = os.environ.get("ROBOT_NUM", os.environ.get("ROBOT_NUMBER", "1"))
+        node_namespace = f"R{robot_num_str}"
+        try:
+            robot_num_int = int(robot_num_str)
+        except ValueError:
+            robot_num_int = 1
+        
+        # Robot 1 maps to go1_0165 (base offset is 164)
+        robot_ns_default = f"go1_016{164 + robot_num_int}"
 
         super().__init__("go1_robot_controller", namespace=node_namespace)
 
