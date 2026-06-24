@@ -12,12 +12,20 @@ from geometry_msgs.msg import Twist
 from std_msgs.msg import Empty
 
 
+import os
+
+
 class Go1RobotController(Node):
     def __init__(self) -> None:
-        super().__init__("go1_robot_controller")
+        # Read robot number from environment variable, default to 1
+        robot_num = os.environ.get("ROBOT_NUM", os.environ.get("ROBOT_NUMBER", "1"))
+        node_namespace = f"R{robot_num}"
+        robot_ns_default = f"go1_016{robot_num}"
+
+        super().__init__("go1_robot_controller", namespace=node_namespace)
 
         # Declare parameters
-        self.declare_parameter("robot_ns", "go1_0165")
+        self.declare_parameter("robot_ns", robot_ns_default)
         self.declare_parameter("tolerance", 0.08)
         self.declare_parameter("kp_linear", 0.5)
         self.declare_parameter("kp_angular", 1.0)
