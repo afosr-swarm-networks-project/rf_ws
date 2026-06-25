@@ -10,6 +10,7 @@ services:
     environment:
       - DISPLAY=${DISPLAY}
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - ROBOT_NUM=${ROBOT_NUM:-1}
     volumes:
       - ./run_agent.sh:/home/run_agent.sh
       - ../src:/home/rf_ws/src

@@ -1,7 +1,8 @@
 #!/bin/bash
 source /opt/ros/humble/setup.bash
 cd /home/rf_ws
-export ROS_NAMESPACE=$(hostname)
+export ROBOT_NUM=${ROBOT_NUM:-1}
+export ROS_NAMESPACE="R${ROBOT_NUM}"
 echo ROS Namespace: $ROS_NAMESPACE
 if [ ! -f src/rf_pipeline/resource/best.torchscript ]; then
   echo "TorchScript model not found, exporting..."
