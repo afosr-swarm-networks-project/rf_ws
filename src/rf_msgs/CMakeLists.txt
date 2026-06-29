@@ -13,8 +13,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/RfDetectionArray.msg"
   "msg/RfScore.msg"
   "msg/RfScoreArray.msg"
-  "msg/MoveCommand.msg"
-  "msg/Odometry.msg"
   DEPENDENCIES builtin_interfaces std_msgs
 )
 
