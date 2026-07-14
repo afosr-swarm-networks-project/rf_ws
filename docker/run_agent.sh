@@ -1,8 +1,8 @@
 #!/bin/bash
 source /opt/ros/humble/setup.bash
 cd /home/rf_ws
-export ROS_NAMESPACE=$(hostname)
 echo ROS Namespace: $ROS_NAMESPACE
+echo ROS Domain ID: $ROS_DOMAIN_ID
 if [ ! -f src/rf_pipeline/resource/best.torchscript ]; then
   echo "TorchScript model not found, exporting..."
   yolo export model=src/rf_pipeline/resource/best.pt nms=True

@@ -1,0 +1,18 @@
+[Unit]
+Description=RF Agent Docker Container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/autonomypark/rf_ws/docker
+Environment="ROS_NAMESPACE=P1"
+Environment="RMW_IMPLEMENTATION=rmw_cyclonedds_cpp"
+Environment="ROS_DOMAIN_ID=0"
+ExecStart=/bin/bash -c "/usr/bin/docker image inspect rf_image:latest >/dev/null 2>&1 || { echo 'rf_image:latest not found, exiting gracefully.'; exit 0; }; exec /usr/bin/docker compose up --no-build rf_agent"
+ExecStop=/usr/bin/docker compose down
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

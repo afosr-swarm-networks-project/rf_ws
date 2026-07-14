@@ -9,7 +9,9 @@ services:
     hostname: jetson
     environment:
       - DISPLAY=${DISPLAY}
+      - ROS_NAMESPACE=${ROS_NAMESPACE:-jetson}
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
     volumes:
       - ./run_agent.sh:/home/run_agent.sh
       - ../src:/home/rf_ws/src
